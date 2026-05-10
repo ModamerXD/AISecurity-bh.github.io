@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Rajdhani:wght@500;700&family=Fira+Code:wght@400;600&display=swap');
+
+:root {
+    --bg-base: #02040a;
+    --glass-bg: rgba(13, 17, 23, 0.7);
+    --glass-border: rgba(0, 255, 136, 0.15);
+    --neon-green: #00ff88;
+    --neon-blue: #00f0ff;
+    --alert-red: #ff3366;
+    --text-main: #8b949e;
+    --text-light: #c9d1d9;
+}
+
+body, html {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, .nav-link, .brand-font { 
+    font-family: 'Rajdhani', sans-serif; 
+    text-transform: uppercase; 
+    font-weight: 700; 
+    color: #fff; 
+}
+.text-gradient { 
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-green)); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+}
+.section-subtitle { 
+    color: var(--neon-blue); 
+    letter-spacing: 4px; 
+    font-size: 0.9rem; 
+    margin-bottom: 10px; 
+    display: block; 
+    font-family: 'Fira Code', monospace; 
+}
+
+/* Canvas Background */
+#matrix-canvas { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    z-index: -1; 
+    opacity: 0.15; 
+    pointer-events: none; 
+}
+
+/* Navbar */
+.navbar { 
+    background: rgba(2, 4, 10, 0.8) !important; 
+    backdrop-filter: blur(15px); 
+    border-bottom: 1px solid rgba(255,255,255,0.05); 
+}
+.navbar-brand { 
+    font-size: 1.8rem; 
+    letter-spacing: 2px; 
+}
+.nav-link { 
+    font-size: 0.9rem; 
+    letter-spacing: 1px; 
+    transition: 0.3s; 
+    color: var(--text-light) !important; 
+}
+.nav-link:hover { 
+    color: var(--neon-green) !important; 
+}
+
+/* Hero */
+.hero { 
+    padding: 180px 0 120px; 
+    position: relative; 
+    border-bottom: 1px solid var(--glass-border); 
+}
+.decrypt-text { 
+    min-height: 80px; 
+}
+
+/* Glass Cards */
+.glass-card { 
+    background: var(--glass-bg); 
+    backdrop-filter: blur(10px); 
+    border: 1px solid var(--glass-border); 
+    border-radius: 12px; 
+    padding: 2.5rem; 
+    height: 100%; 
+    transition: 0.4s; 
+    position: relative; 
+    overflow: hidden;
+}
+.glass-card:hover { 
+    transform: translateY(-5px); 
+    border-color: var(--neon-green); 
+    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1); 
+}
+
+/* Terminal */
+.terminal { 
+    background-color: #0d1117; 
+    border: 1px solid #30363d; 
+    border-radius: 8px; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5); 
+}
+.terminal-header { 
+    background: #161b22; 
+    padding: 12px 20px; 
+    display: flex; 
+    align-items: center; 
+    border-bottom: 1px solid #30363d; 
+}
+.terminal-body { 
+    padding: 20px; 
+    font-family: 'Fira Code', monospace; 
+    font-size: 0.85rem; 
+    color: #79c0ff; 
+    line-height: 1.6; 
+    overflow-x: auto;
+}
+
+/* Animated Numbers */
+.pulsing-number { 
+    font-size: 5rem; 
+    font-family: 'Rajdhani', sans-serif; 
+    font-weight: 700; 
+    color: var(--alert-red); 
+    line-height: 1; 
+    text-shadow: 0 0 20px rgba(255, 51, 102, 0.5); 
+    animation: pulse 2s infinite; 
+}
+@keyframes pulse { 
+    0% { opacity: 1; } 
+    50% { opacity: 0.7; text-shadow: 0 0 40px rgba(255, 51, 102, 0.8); } 
+    100% { opacity: 1; } 
+}
+
+/* Flow Visualizer */
+.flow-container { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    margin-top: 2rem; 
+    position: relative; 
+}
+.flow-line { 
+    position: absolute; 
+    top: 30px; 
+    left: 5%; 
+    width: 90%; 
+    height: 2px; 
+    background: rgba(0, 255, 136, 0.2); 
+    z-index: 0; 
+}
+.flow-node { 
+    position: relative; 
+    z-index: 1; 
+    background: var(--bg-base); 
+    border: 2px solid var(--neon-blue); 
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 1.5rem; 
+    color: var(--neon-blue); 
+    margin: 0 auto 15px;
+}
+.flow-node.attack { 
+    border-color: var(--alert-red); 
+    color: var(--alert-red); 
+}
+.flow-node.success { 
+    border-color: var(--neon-green); 
+    color: var(--neon-green); 
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+}
+
+/* Cyber Inputs */
+.cyber-input {
+    background: rgba(0, 0, 0, 0.5); 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-light); 
+    font-family: 'Fira Code', monospace; 
+    font-size: 0.9rem;
+    padding: 12px; 
+    border-radius: 6px; 
+    width: 100%; 
+    margin-bottom: 15px; 
+    transition: 0.3s;
+}
+.cyber-input:focus { 
+    outline: none; 
+    border-color: var(--neon-blue); 
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2); 
+}
+.cyber-input::placeholder { color: #555; }
+
+/* Buttons */
+.btn-cyber { 
+    background: transparent; 
+    border: 1px solid rgba(255,255,255,0.2); 
+    color: #fff; 
+    padding: 8px 20px; 
+    font-family: 'Rajdhani'; 
+    font-weight: 700; 
+    letter-spacing: 1px; 
+    transition: 0.3s; 
+    text-decoration: none; 
+    display: inline-block; 
+    border-radius: 4px; 
+    width: 100%; 
+    margin-top: 10px; 
+    cursor: pointer;
+}
+.btn-cyber:hover { 
+    border-color: var(--neon-blue); 
+    color: var(--neon-blue); 
+    background: rgba(0, 240, 255, 0.05); 
+}
+
+.section-padding { 
+    padding: 100px 0; 
+    border-bottom: 1px solid rgba(255,255,255,0.02); 
+}
