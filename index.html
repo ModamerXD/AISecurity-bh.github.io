@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Security Testing Tool | ITCY 499 Senior Project</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --surface-color: #161b22;
+            --primary-accent: #58a6ff;
+            --secondary-accent: #2ea043;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            --font-code: "Courier New", Courier, monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--surface-color);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            color: var(--primary-accent);
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-accent);
+            border-bottom: 2px solid #30363d;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background-color: var(--surface-color);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-accent);
+        }
+
+        .card h3 {
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .terminal-box {
+            background-color: #000;
+            color: var(--secondary-accent);
+            font-family: var(--font-code);
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin: 2rem 0;
+            border: 1px solid #30363d;
+            overflow-x: auto;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--surface-color);
+            color: var(--text-muted);
+            border-top: 1px solid #30363d;
+            margin-top: 4rem;
+        }
+
+        a {
+            color: var(--primary-accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="hero-title">Automated LLM Testing Tool</h1>
+        <p class="hero-subtitle">ITCY 499 Senior Project: A dynamic fuzzing framework designed to extract hidden system prompts and test the safety guardrails of modern Large Language Models.</p>
+    </header>
+
+    <div class="container">
+        
+        <section>
+            <h2 class="section-title">The Problem</h2>
+            <p>As Artificial Intelligence becomes deeply integrated into enterprise systems, the hidden instructions (system prompts) guiding these models become critical intellectual property and security boundaries. Standard safety filters evaluate responses for general harm, but often fail to detect sophisticated data exfiltration techniques, leaving proprietary AI configurations vulnerable to extraction.</p>
+        </section>
+
+        <section>
+            <h2 class="section-title">Core Capabilities</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Dynamic Attack Generation</h3>
+                    <p>Utilizes algorithmic mutations (like many-shot, PAIR, and custom payloads) to automatically generate and refine adversarial prompts, bypassing static AI defenses.</p>
+                </div>
+                <div class="card">
+                    <h3>System Prompt Extraction</h3>
+                    <p>A custom-engineered attack module specifically designed to trick target models (e.g., Llama 3.1) into dumping their initial context windows and hidden developer instructions.</p>
+                </div>
+                <div class="card">
+                    <h3>Automated Evaluation</h3>
+                    <p>Features a specialized classifier system that accurately detects successful data leaks, identifying false negatives that standard semantic harm classifiers miss.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Example Execution</h2>
+            <p>Our framework executes batch tests against local and cloud-based models. Below is an example of a prompt extraction attack targeting a local Llama-3.1 instance:</p>
+            <div class="terminal-box">
+                > python -m fuzzyai.cli fuzz -m ollama/llama3.1 -a prompt_extraction -T payloads.txt<br><br>
+                [INFO] Fuzzing initialized...<br>
+                [INFO] Target: ollama/llama3.1<br>
+                [INFO] Attack Mode: prompt_extraction<br>
+                [SUCCESS] Payload 02 bypassed guardrails. System context extracted.
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Project Team</h2>
+            <p>Developed for the University of Bahrain Senior Project requirements.</p>
+            <ul style="list-style-type: none; padding-top: 1rem; color: var(--text-muted);">
+                <li><strong>Institution:</strong> University of Bahrain</li>
+                <li><strong>Course:</strong> ITCY 499</li>
+                <li><strong>Contact:</strong> <a href="mailto:admin@aisecurity-bh.site">admin@aisecurity-bh.site</a></li>
+            </ul>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 AI Security Project Team. Hosted on GitHub Pages.</p>
+    </footer>
+
+</body>
+</html>
