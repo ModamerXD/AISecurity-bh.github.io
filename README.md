@@ -1,4 +1,4 @@
-# FuzzyAI | Enterprise Data Exfiltration Framework 🛡️
+# FuzzyAI | Open-source Data Exfiltration Framework 🛡️
 
 ![Status](https://img.shields.io/badge/Status-Completed-success)
 ![University](https://img.shields.io/badge/Institution-University_of_Bahrain-blue)
